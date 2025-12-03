@@ -1,0 +1,50 @@
+@model List<SanalGozluk.Models.Gozluk>
+
+@{
+    ViewData["Title"] = "Yönetim Paneli";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>👓 Gözlük Yönetim Paneli</h2>
+        <a asp-action="Create" class="btn btn-success">+ Yeni Gözlük Ekle</a>
+    </div>
+    
+    <table class="table table-bordered table-hover shadow-sm align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Resim</th>
+                <th>Ad</th>
+                <th>Fiyat</th>
+                <th>Yüz Tipi</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <img src="@item.ResimUrl" width="60" height="40" style="object-fit: contain;" />
+                    </td>
+                    <td class="fw-bold">@item.Ad</td>
+                    <td>@item.Fiyat TL</td>
+                    <td>
+                        <span class="badge bg-info text-dark">@item.YuzTipi</span>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm me-2">
+                            ✏️ Düzenle
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istiyor musun?');">
+                            🗑 Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

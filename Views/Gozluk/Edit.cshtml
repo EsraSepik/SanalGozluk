@@ -1,0 +1,82 @@
+@model SanalGozluk.Models.Gozluk
+
+@{
+    ViewData["Title"] = "Gözlük Düzenle";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">✏️ Gözlük Düzenle</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Gözlük Adı</label>
+                            <input asp-for="Ad" class="form-control" required />
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Fiyat (TL)</label>
+                                <input asp-for="Fiyat" type="number" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Yüz Tipi</label>
+                                <select asp-for="YuzTipi" class="form-select">
+                                    <option value="Oval">Oval</option>
+                                    <option value="Kare">Kare</option>
+                                    <option value="Yuvarlak">Yuvarlak</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Resim URL</label>
+                            <input asp-for="ResimUrl" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">3D Model URL</label>
+                            <input asp-for="Model3DUrl" class="form-control" required />
+                        </div>
+
+                        <div class="card bg-light mb-3 border-warning">
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold text-primary">📐 AR İnce Ayarları</h6>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="form-label small">Boyut (Scale)</label>
+                                        <input asp-for="Scale" class="form-control" />
+                                        <small class="text-muted">Büyütmek için artır</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small">Döndürme (Rotation)</label>
+                                        <input asp-for="Rotation" class="form-control" />
+                                        <small class="text-muted">Örn: 0 90 0</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small">Konum (Position)</label>
+                                        <input asp-for="Position" class="form-control" />
+                                        <small class="text-muted">Yukarı/Aşağı için ortayı değiştir</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning btn-lg">Güncelle ve Kaydet</button>
+                            <a asp-action="Index" class="btn btn-secondary">İptal</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

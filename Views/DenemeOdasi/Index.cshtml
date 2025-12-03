@@ -1,0 +1,53 @@
+@model SanalGozluk.Models.Gozluk
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sanal Deneme - @Model.Ad</title>
+    
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+    
+    <style>
+        body { margin: 0; }
+        html, body { overflow: hidden; width: 100%; height: 100%; }
+        
+        .geri-don-btn {
+            position: absolute; top: 20px; left: 20px; z-index: 999;
+            background-color: white; padding: 10px 20px; border-radius: 20px;
+            text-decoration: none; font-family: sans-serif; font-weight: bold; color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    
+    <a href="/" class="geri-don-btn">⬅ Mağazaya Dön</a>
+
+    <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        
+        <a-assets>
+            <a-asset-item id="gozlukModeli" src="@Model.Model3DUrl"></a-asset-item>
+        </a-assets>
+
+        <a-camera active="false" position="0 0 0"></a-camera>
+        
+        <a-entity mindar-face-target="anchorIndex: 168">
+            
+            <a-gltf-model 
+                src="#gozlukModeli" 
+                rotation="@Model.Rotation" 
+                position="@Model.Position" 
+                scale="@Model.Scale"> 
+            </a-gltf-model>
+
+        </a-entity>
+
+    </a-scene>
+</body>
+</html>

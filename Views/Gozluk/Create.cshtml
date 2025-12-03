@@ -1,0 +1,63 @@
+@model SanalGozluk.Models.Gozluk
+
+@{
+    ViewData["Title"] = "Yeni Gözlük Ekle";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Yeni Gözlük Ekle</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        
+                        <input type="hidden" asp-for="Scale" value="0.07 0.07 0.07" />
+                        <input type="hidden" asp-for="Rotation" value="0 0 0" />
+                        <input type="hidden" asp-for="Position" value="0 0 0" />
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Gözlük Modeli Adı</label>
+                            <input asp-for="Ad" class="form-control" placeholder="Örn: RayBan Wayfarer" required />
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Fiyat (TL)</label>
+                                <input asp-for="Fiyat" type="number" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Yüz Tipi</label>
+                                <select asp-for="YuzTipi" class="form-select">
+                                    <option value="Oval">Oval</option>
+                                    <option value="Kare">Kare</option>
+                                    <option value="Yuvarlak">Yuvarlak</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Ürün Fotoğrafı (URL)</label>
+                            <input asp-for="ResimUrl" class="form-control" placeholder="https://..." required />
+                            <div class="form-text">Gözlüğün vitrinde görünecek 2D resmi.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">3D Model Dosyası (URL veya Yol)</label>
+                            <input asp-for="Model3DUrl" class="form-control" placeholder="/modeller/gozluk.glb" required />
+                            <div class="form-text">wwwroot klasöründeki dosya yolu veya internet linki.</div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Kaydet</button>
+                            <a asp-action="Index" class="btn btn-secondary">İptal</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
